@@ -6,7 +6,7 @@ import weatherApi from '../../utils/weatherApi';
 
 function App() {
 
-const [weather, setWeather] = React.useState(null);
+const [weather, setWeather] = React.useState({});
 
  React.useEffect(() => {
  
