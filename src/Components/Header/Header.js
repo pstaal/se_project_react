@@ -2,7 +2,7 @@ import './Header.css';
 import logo from '../../images/Logo.png';
 import avatar from '../../images/avatar.png'
 
-function Header() {
+function Header({weather}) {
     
     const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   
@@ -10,7 +10,7 @@ function Header() {
         <header className="header">
             <div className="header__wrapper">
                 <img className="header__logo" src={logo} alt="home" />
-                <p className="header__date">{currentDate}, Culemborg</p>
+                <p className="header__date">{currentDate}, {weather.location}</p>
             </div>
             <div className="header__wrapper">
                 <button className="header__button">+ Add clothes</button>
