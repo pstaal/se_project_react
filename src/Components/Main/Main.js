@@ -1,10 +1,10 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main() {
+function Main({weather}) {
     return (
         <main className="main">
-            <WeatherCard/>
+            <WeatherCard weather={weather}/>
             <ul>
 
             </ul>

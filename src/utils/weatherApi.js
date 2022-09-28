@@ -1,5 +1,6 @@
 import {API_key, location} from './constants';
 import createTemperatureRange from './createTemperatureRange';
+import getCondition from './getCondition';
 
 class WeatherApi {
     constructor({ baseUrl, headers }) {
@@ -26,7 +27,9 @@ class WeatherApi {
         return {
             temp: res.current.temp_f,
             range: createTemperatureRange(res.current.temp_f),
-            location: res.location.name
+            location: res.location.name,
+            is_day: res.current.is_day === 1,
+            condition: getCondition(res.current.condition.text)
         };
       })
 

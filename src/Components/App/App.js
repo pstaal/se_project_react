@@ -13,6 +13,7 @@ const [weather, setWeather] = React.useState({});
 
   weatherApi.getWeather()
   .then((res) => {
+    console.log(res);
     setWeather(res);
   })
   .catch((error) => {

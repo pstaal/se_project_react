@@ -1,0 +1,32 @@
+.weathercard {
+    width: 100%;
+    height: 80px;
+    margin-top: 28px;
+    background: #00A3FF;
+    border-radius: 12px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weathercard__temp {
+    padding: 0;
+    margin: 0;
+    margin-left: 16px;
+    align-self: center;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.11;
+}
+
+.weathercard-bgLightBlue {
+    background: #00A3FF;
+}
+
+.weathercard-bgGreyBlue {
+    background: #6CA6C7;
+}
+
+.weathercard-bgDarktBlue {
+    background: #286897;
+}
