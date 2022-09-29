@@ -26,10 +26,17 @@
     position: relative;
 }
 
-.weathercard__icon {
+.weathercard__icon-first {
+    position: absolute;
+    right: 0;
+}
+
+.weathercard__icon-second {
     height: 100%;
     position: absolute;
     right: 0;
+    z-index: 2;
+    top: 10px;
 }
 
 .weathercard-bgLightBlue {

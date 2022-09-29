@@ -14,3 +14,8 @@ export const weatherConditions = {
     snow_night: "./snow_night.png",
     fog_night: "./fog_night.png",
 };
+
+export const weatherIcons = [
+    'weathercard__icon-first',
+    'weathercard__icon-second'
+];
