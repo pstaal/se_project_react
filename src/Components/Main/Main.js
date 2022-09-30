@@ -1,12 +1,16 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
+import "./Main.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-function Main({weather}) {
+function Main({weather, clothingItems}) {
     return (
         <main className="main">
             <WeatherCard weather={weather}/>
-            <ul>
-
+            <p className="main__text">Today is {weather.temp}  &#8457; / You may want to wear:</p>
+            <ul className="main__cardlist">
+                {clothingItems.map((clothingItem) => {
+                    return <ItemCard clothingItem={clothingItem} key={clothingItem._id}/>
+                })}
             </ul>
         </main>
     )

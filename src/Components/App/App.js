@@ -3,11 +3,13 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import React from 'react';
 import weatherApi from '../../utils/weatherApi';
+import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
 
 const [weather, setWeather] = React.useState({});
-
+const [clothingItems, setClothingItems ] = React.useState(defaultClothingItems);
+ 
  React.useEffect(() => {
  
 
@@ -25,7 +27,7 @@ const [weather, setWeather] = React.useState({});
   return (
     <div className="page">
       <Header weather={weather}/>
-      <Main weather={weather}/>
+      <Main weather={weather} clothingItems={clothingItems}/>
     </div>
   );
 }

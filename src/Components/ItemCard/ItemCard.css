@@ -1,0 +1,27 @@
+.itemcard {
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.itemcard__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.itemcard__title {
+    margin: 0 auto;
+    padding: 2px 12px;
+    width: max-content;
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    color: rgba(0, 0, 0, 0.6);
+    background-color:rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+}
