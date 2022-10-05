@@ -5,6 +5,7 @@ import React from 'react';
 import weatherApi from '../../utils/weatherApi';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
+import Footer from '../Footer/Footer';
 import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
@@ -51,6 +52,7 @@ const [popupItem, setPopupItem ] = React.useState({link: '', name: '', weather:'
     <div className="page">
       <Header weather={weather} openModal={openModal}/>
       <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
+      <Footer/>
       <ModalWithForm title={"New garment"} name={"garment"} buttonText={"Add garment"} onClose={onClose} isModalOpen={isModalOpen}>
         <label className="modal__label" htmlFor="name">Name</label>
         <input className="modal__inputtext" type="text" id="name" placeholder="Name" required/>
