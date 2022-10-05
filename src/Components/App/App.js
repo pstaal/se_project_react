@@ -4,6 +4,7 @@ import Main from '../Main/Main';
 import React from 'react';
 import weatherApi from '../../utils/weatherApi';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import ItemModal from '../ItemModal/ItemModal';
 import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
 const [weather, setWeather] = React.useState({});
 const [clothingItems, setClothingItems ] = React.useState(defaultClothingItems);
 const [isModalOpen, setIsModalOpen ] = React.useState(false);
+const [isPopupOpen, setIsPopupOpen ] = React.useState(false);
+const [popupItem, setPopupItem ] = React.useState({link: '', name: '', weather:''})
 
  const onClose = () => {
   setIsModalOpen(false)
@@ -34,10 +37,20 @@ const [isModalOpen, setIsModalOpen ] = React.useState(false);
 
  },[])
 
+ const handleCardClick = (link, name, weather) => {
+    setPopupItem({link,name, weather});
+    setIsPopupOpen(true);
+ };
+
+ const closePopup = () => {
+  setPopupItem({link: '', name: '', weather: ''});
+  setIsPopupOpen(false);
+ }
+
   return (
     <div className="page">
       <Header weather={weather} openModal={openModal}/>
-      <Main weather={weather} clothingItems={clothingItems}/>
+      <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
       <ModalWithForm title={"New garment"} name={"garment"} buttonText={"Add garment"} onClose={onClose} isModalOpen={isModalOpen}>
         <label className="modal__label" htmlFor="name">Name</label>
         <input className="modal__inputtext" type="text" id="name" placeholder="Name" required/>
@@ -57,6 +70,7 @@ const [isModalOpen, setIsModalOpen ] = React.useState(false);
           <label className="modal__radiolabel" htmlFor="cold">Cold</label>
         </div>
       </ModalWithForm>
+      <ItemModal isPopupOpen={isPopupOpen} item={popupItem} closePopup={closePopup}/>
     </div>
   );
 }
