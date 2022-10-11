@@ -25,36 +25,36 @@ export const defaultClothingItems = [
       _id: 0,
       name: "Cap",
       weather: "hot",
-      link: "https://unsplash.it/640/425",
+      link: "https://source.unsplash.com/Ur742-klaa4",
     },
     {
       _id: 1,
       name: "Hoodie",
       weather: "warm",
-      link: "https://unsplash.it/640/425",
+      link: "https://source.unsplash.com/REOoETloFqE",
     },
     {
       _id: 2,
       name: "Jacket",
       weather: "cold",
-      link: "https://unsplash.it/640/425",
+      link: "https://source.unsplash.com/6TIoPIpMvLc",
     },
     {
       _id: 3,
       name: "Sneakers",
       weather: "cold",
-      link: "https://unsplash.it/640/425",
+      link: "https://source.unsplash.com/jvoZ-Aux9aw",
     },
     {
       _id: 4,
       name: "T-Shirt",
       weather: "hot",
-      link: "https://unsplash.it/640/425",
+      link: "https://source.unsplash.com/WWesmHEgXDs",
     },
     {
       _id: 5,
-      name: "Winter coat",
+      name: "Jeans",
       weather: "cold",
-      link: "https://unsplash.it/640/425",
+      link: "https://source.unsplash.com/m1m2EZOZVwA",
     }
   ] 
