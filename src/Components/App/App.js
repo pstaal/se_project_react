@@ -14,7 +14,7 @@ const [weather, setWeather] = React.useState({});
 const [clothingItems, setClothingItems ] = React.useState(defaultClothingItems);
 const [isModalOpen, setIsModalOpen ] = React.useState(false);
 const [isPopupOpen, setIsPopupOpen ] = React.useState(false);
-const [popupItem, setPopupItem ] = React.useState({link: '', name: '', weather:''})
+const [popupItem, setPopupItem ] = React.useState({name: '', weather: '', link:''})
 
  const onClose = () => {
   setIsModalOpen(false)
@@ -29,7 +29,6 @@ const [popupItem, setPopupItem ] = React.useState({link: '', name: '', weather:'
 
   weatherApi.getWeather()
   .then((res) => {
-    console.log(res);
     setWeather(res);
   })
   .catch((error) => {
@@ -38,13 +37,14 @@ const [popupItem, setPopupItem ] = React.useState({link: '', name: '', weather:'
 
  },[])
 
- const handleCardClick = (link, name, weather) => {
-    setPopupItem({link,name, weather});
+ const handleCardClick = ({name, weather, link}) => {
+    
+    setPopupItem({name ,weather, link});
     setIsPopupOpen(true);
  };
 
  const closePopup = () => {
-  setPopupItem({link: '', name: '', weather: ''});
+  setPopupItem({name: '', weather: '', link: ''});
   setIsPopupOpen(false);
  }
 

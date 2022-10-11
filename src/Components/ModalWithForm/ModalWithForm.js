@@ -11,20 +11,11 @@ function ModalWithForm({title, name, buttonText, children, isModalOpen, onClose}
           }
         };
     
-        const closeOnClick = (event) => {
-          if (
-            event.target.classList.contains("modal") &&
-            !event.target.classList.contains("modal__container")
-          ) {
-            onClose();
-          }
-        };
     
-        window.addEventListener("click", closeOnClick);
         window.addEventListener("keydown", closeOnEscape);
     
         return () => {
-          window.removeEventListener("click", closeOnClick);
+
           window.removeEventListener("keydown", closeOnEscape);
         };
       }, [onClose]);
@@ -35,8 +26,8 @@ function ModalWithForm({title, name, buttonText, children, isModalOpen, onClose}
    }
 
     return (
-    <div className={`modal modal_type_${name} ${isModalOpen ? "modal_opened" : ""}`}>
-      <div className="modal__container">
+    <div className={`modal modal_type_${name} ${isModalOpen ? "modal_opened" : ""}`} onClick={closeModal}>
+      <div className="modal__container" onClick={e => e.stopPropagation()}>
         <h2 className="modal__title">{title}</h2>
         <button
           type="button"

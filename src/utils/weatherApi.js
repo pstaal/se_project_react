@@ -23,7 +23,6 @@ class WeatherApi {
       );
       return fetch(url).then((res) => res.json())
       .then((res)=> {
-        console.log(res);
         return {
             temp: res.current.temp_f,
             range: createTemperatureRange(res.current.temp_f),

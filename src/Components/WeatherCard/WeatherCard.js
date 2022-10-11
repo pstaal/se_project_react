@@ -14,7 +14,6 @@ function WeatherCard({weather}) {
             <h2 className="weathercard__temp">{weather.temp}  &#8457;</h2>
             <div className="weathercard__wrapper">
                 {weatherArray.map((item, index) => {
-                    console.log(item);
                     return <img key={item} src={process.env.PUBLIC_URL + weatherConditions[item]} alt={item} className={weatherIcons[index]}/>
                 })}
             </div>

@@ -60,6 +60,7 @@
     background: transparent;
     background-image: url(../../images/popup-close.png);
     background-repeat: no-repeat;
+    background-position: center center; 
     position: absolute;
     width: 14px;
     height: 14px;
