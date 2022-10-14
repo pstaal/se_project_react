@@ -24,7 +24,7 @@ class WeatherApi {
       return fetch(url).then((res) => res.json())
       .then((res)=> {
         return {
-            temp: res.current.temp_f,
+            temp: { F : `${res.current.temp_f}°F`, C : `${res.current.temp_c}°C` },
             range: createTemperatureRange(res.current.temp_f),
             location: res.location.name,
             is_day: res.current.is_day === 1,

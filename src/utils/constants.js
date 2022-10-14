@@ -1,4 +1,4 @@
-export const API_key = '256b7ee1c32f4fc5b6e103646221507';
+export const API_key = 'd746abca7e634fd3b3c104223221410';
 export const location = { latitude: 51.9561076, longitude: 5.2400448};
 export const weatherConditions = {
     sunny_day: "/sunny_day.png",
