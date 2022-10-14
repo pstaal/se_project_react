@@ -58,9 +58,7 @@ const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
 
   return (
     <div className="page">
-       <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-        >
+       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
           <Header weather={weather} openModal={openModal}/>
           <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
           <Footer/>

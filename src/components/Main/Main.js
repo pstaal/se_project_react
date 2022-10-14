@@ -5,6 +5,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 function Main({weather, clothingItems, handleCardClick}) {
+
     const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
 
     return (
