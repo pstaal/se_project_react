@@ -30,8 +30,23 @@
   border: 2px solid rgba(0, 0, 0);
 }
 
+.slider .temp {
+  margin: 0;
+  padding: 0;
+  width: 28px;
+  text-align: center;
+  font-weight: 700;
+  mix-blend-mode: difference;
+  transition: .4s;
+  color: rgba(255,255,255,0.5);
+}
+
 .slider:hover .temp {
-  color: #000;
+  color: #fff;
+}
+
+.slider .temp_active {
+  color: #fff;
 }
 
 .slider:before {
@@ -58,20 +73,6 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.temp {
-  margin: 0;
-  padding: 0;
-  width: 28px;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-  mix-blend-mode: difference;
-}
-
-.slider .temp {
-  color: #fff;
 }
 
 .slider:hover:before {
