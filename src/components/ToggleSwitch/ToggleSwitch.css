@@ -79,6 +79,10 @@ input:checked + .slider:before {
   transform: translateX(2px);
 }
 
+input:checked + .slider:hover::before {
+  transform: translateX(28px);
+}
+
 .slider.round:before {
   border-radius: 50%;
 }
