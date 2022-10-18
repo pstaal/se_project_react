@@ -8,6 +8,8 @@ import ItemModal from '../ItemModal/ItemModal';
 import Footer from '../Footer/Footer';
 import { defaultClothingItems } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
+import Profile from '../Profile/Profile';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
 
@@ -60,7 +62,14 @@ const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
     <div className="page">
        <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
           <Header weather={weather} openModal={openModal}/>
-          <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
+            <Switch>
+              <Route path="/profile">
+                <Profile clothingItems={clothingItems} handleCardClick={handleCardClick} />
+              </Route>
+              <Route path="/">
+                <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
+              </Route>
+            </Switch>
           <Footer/>
           <ModalWithForm title={"New garment"} name={"garment"} buttonText={"Add garment"} onClose={onClose} isModalOpen={isModalOpen}>
             <label className="modal__label" htmlFor="name">Name</label>

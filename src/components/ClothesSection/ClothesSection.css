@@ -1,0 +1,44 @@
+.clothessection {
+    margin: 0;
+    padding: 0;
+    flex-grow: 3;
+}
+
+.clothessection__text {
+    width: 100%;
+    display: flex;
+}
+
+.clothessection__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+}
+
+.clothessection__button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+    margin: 0;
+    margin-left: 20px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    width: 88px;
+    height: 25px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+}
+
+.clothessection__cardlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+    grid-auto-rows: 328px;
+    gap: 20px;
+    width: 100%;
+}
