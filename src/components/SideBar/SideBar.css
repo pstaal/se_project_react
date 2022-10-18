@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     flex-grow: 1;
+    flex-shrink: 1;
+    margin-top: 47px;
+    display:flex;
+    height: 56px;
+    align-items: center;
 }
 
 .sidebar__profileAvatar {
@@ -10,7 +15,9 @@
 }
 
 .sidebar__profileName {
+    margin:0;
+    padding:0;
+    margin-left: 16px;
     font-weight: 700;
     font-size: 20px;
-    line-height: 1.25;
 }

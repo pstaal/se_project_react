@@ -68,7 +68,7 @@ const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
               </Route>
               <Route path="/">
                 <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
-              </Route>
+              </Route>   
             </Switch>
           <Footer/>
           <ModalWithForm title={"New garment"} name={"garment"} buttonText={"Add garment"} onClose={onClose} isModalOpen={isModalOpen}>
