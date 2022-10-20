@@ -41,7 +41,7 @@ class Api {
   
   //initalize api instance
   const api = new Api({
-    baseUrl: 'http://localhost:3001',
+    baseUrl: 'https://my-json-server.typicode.com/pstaal/se_project_react',
     headers: {
       "Content-Type": "application/json",
     },
