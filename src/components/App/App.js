@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer';
 import { defaultClothingItems } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import Profile from '../Profile/Profile';
+import AddItemModal from '../AddItemModal/AddItemModal';
 import { Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -52,6 +53,10 @@ const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
   setIsPopupOpen(false);
  }
 
+ const handleAddItemSubmit = (item) => {
+  setClothingItems([item, ...clothingItems]); 
+ }
+
  const handleToggleSwitchChange = () => {
   currentTemperatureUnit === 'F'
     ? setCurrentTemperatureUnit('C')
@@ -71,25 +76,7 @@ const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F');
               </Route>   
             </Switch>
           <Footer/>
-          <ModalWithForm title={"New garment"} name={"garment"} buttonText={"Add garment"} onClose={onClose} isModalOpen={isModalOpen}>
-            <label className="modal__label" htmlFor="name">Name</label>
-            <input className="modal__inputtext" type="text" id="name" placeholder="Name" required/>
-            <label className="modal__label" htmlFor="image">Image</label>
-            <input className="modal__inputtext" type="text" id="image" placeholder="Image URL" required/>
-            <label className="modal__label" htmlFor="weathertype">Select the weather type:</label>
-            <div className="modal__radiocontainer">
-              <input className="modal__inputradio" type="radio" id="hot" name="weathertype" value="hot"/>
-              <label className="modal__radiolabel" htmlFor="hot">Hot</label>
-            </div>
-            <div className="modal__radiocontainer">
-              <input className="modal__inputradio" type="radio" id="warm" name="weathertype" value="warm"/>
-              <label className="modal__radiolabel" htmlFor="warm">Warm</label>
-            </div>
-            <div className="modal__radiocontainer">
-              <input className="modal__inputradio" type="radio" id="cold" name="weathertype" value="cold"/>
-              <label className="modal__radiolabel" htmlFor="cold">Cold</label>
-            </div>
-          </ModalWithForm>
+          <AddItemModal onClose={onClose} isModalOpen={isModalOpen} onAddItem={handleAddItemSubmit} />
           <ItemModal isPopupOpen={isPopupOpen} item={popupItem} closePopup={closePopup}/>
       </CurrentTemperatureUnitContext.Provider>
     </div>

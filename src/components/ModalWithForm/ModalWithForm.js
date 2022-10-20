@@ -1,7 +1,7 @@
 import "./ModalWithForm.css";
 import React from 'react';
 
-function ModalWithForm({title, name, buttonText, children, isModalOpen, onClose}) {
+function ModalWithForm({title, name, buttonText, children, isModalOpen, onClose, handleSubmit}) {
 
 
     React.useEffect(() => {
@@ -35,8 +35,8 @@ function ModalWithForm({title, name, buttonText, children, isModalOpen, onClose}
           onClick={closeModal}
         ></button>
         <form className="modal__form" name={name}>
-            {children}
-            <button type="submit" className="modal__button">{buttonText}</button>
+            {children}     
+            <button type="submit" onClick={(event) => handleSubmit(event)} className="modal__button">{buttonText}</button>
         </form>    
       </div>
     </div>
