@@ -1,8 +1,14 @@
 import './ItemModal.css';
 import React from 'react';
 
-function ItemModal({isPopupOpen, item, closePopup}) {
+function ItemModal({isPopupOpen, item, closePopup, openConfirmationModal, setDeleteCard}) {
     const {link, name, weather} = item;
+
+    const handleClick = () => {
+      closePopup();
+      openConfirmationModal();
+      setDeleteCard({name, weather, link})
+    }
 
     React.useEffect(() => {
         const closeOnEscape = (event) => {
@@ -30,6 +36,7 @@ function ItemModal({isPopupOpen, item, closePopup}) {
             <img src={link} alt={name} className="popup__image"/>
             <p className="popup__itemName">{name}</p>
             <p className="popup__itemWeather">Weather: {weather}</p>
+            <button className="popup__deleteButton" onClick={handleClick}>Delete item</button>
           </div>
         </div>
         )
