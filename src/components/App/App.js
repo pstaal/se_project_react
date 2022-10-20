@@ -12,17 +12,18 @@ import Profile from '../Profile/Profile';
 import AddItemModal from '../AddItemModal/AddItemModal';
 import { Route, Switch } from 'react-router-dom';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import api from '../../utils/api';
 
 function App() {
 
 const [weather, setWeather] = React.useState({});
-const [clothingItems, setClothingItems ] = React.useState(defaultClothingItems);
+const [clothingItems, setClothingItems ] = React.useState([]);
 const [isModalOpen, setIsModalOpen ] = React.useState(false);
 const [isPopupOpen, setIsPopupOpen ] = React.useState(false);
 const [isConfirmationModalOpen, setIsConfirmationModalOpen] = React.useState(false);
-const [popupItem, setPopupItem ] = React.useState({name: '', weather: '', link:''});
+const [popupItem, setPopupItem ] = React.useState({name: '', weather: '', imageUrl:''});
 const [currentTemperatureUnit, setCurrentTemperatureUnit] = React.useState('F'); 
-const [deleteCard, setDeleteCard ] = React.useState({});
+const [deleteCard, setDeleteCard ] = React.useState(null);
 
  const onClose = () => {
   setIsModalOpen(false)
@@ -38,11 +39,10 @@ const [deleteCard, setDeleteCard ] = React.useState({});
 
  const closeConfirmationModal = () => {
   setIsConfirmationModalOpen(false)
+  setDeleteCard(null);
 };
  
  React.useEffect(() => {
- 
-
   weatherApi.getWeather()
   .then((res) => {
     setWeather(res);
@@ -53,19 +53,37 @@ const [deleteCard, setDeleteCard ] = React.useState({});
 
  },[])
 
- const handleCardClick = ({name, weather, link}) => {
+ React.useEffect(() => {
+  api.getItems()
+  .then((res) => {
+    console.log(res)
+    setClothingItems(res);
+    console.log(clothingItems)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+
+ },[])
+
+ const handleCardClick = ({name, weather, imageUrl, id}) => {
     
-    setPopupItem({name ,weather, link});
+    setPopupItem({name ,weather, imageUrl, id});
     setIsPopupOpen(true);
  };
 
  const closePopup = () => {
-  setPopupItem({name: '', weather: '', link: ''});
+  setPopupItem({name: '', weather: '', link: '', id: ''});
   setIsPopupOpen(false);
  }
 
- const handleAddItemSubmit = (item) => {
-  setClothingItems([item, ...clothingItems]); 
+ const handleAddItemSubmit = (name, imageUrl, weather) => {
+  api.addItem(name, imageUrl, weather).then((res) => {
+    setClothingItems([res, ...clothingItems]); 
+  }).catch((error) => {
+    console.log(error)
+  })
+  
  }
 
  const handleToggleSwitchChange = () => {
@@ -75,11 +93,14 @@ const [deleteCard, setDeleteCard ] = React.useState({});
 }; 
 
 const handleCardDelete = () => {
-console.log(clothingItems);
-console.log(deleteCard);
- setClothingItems(clothingItems.filter(item => item.link !== deleteCard.link));
- console.log(clothingItems);
- closeConfirmationModal();
+api.deleteItem(deleteCard).then((res) => {
+  setClothingItems(clothingItems.filter((item) => item.id !== deleteCard))
+  closeConfirmationModal();
+  setDeleteCard(null);
+}).catch((error) => {
+  console.log(error)
+})
+ 
 };
 
   return (
@@ -88,7 +109,7 @@ console.log(deleteCard);
           <Header weather={weather} openModal={openModal}/>
             <Switch>
               <Route path="/profile">
-                <Profile clothingItems={clothingItems} handleCardClick={handleCardClick} />
+                <Profile clothingItems={clothingItems} handleCardClick={handleCardClick} openModal={openModal}/>
               </Route>
               <Route path="/">
                 <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
