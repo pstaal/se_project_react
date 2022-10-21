@@ -23,6 +23,7 @@
     width:fit-content;
     color: rgba(0, 0, 0, 0.5);
     accent-color: #000;
+    cursor: pointer;
 }
 
 .modal__radiolabel {

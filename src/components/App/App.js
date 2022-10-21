@@ -3,10 +3,8 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import React from 'react';
 import weatherApi from '../../utils/weatherApi';
-import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
 import Footer from '../Footer/Footer';
-import { defaultClothingItems } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import Profile from '../Profile/Profile';
 import AddItemModal from '../AddItemModal/AddItemModal';
@@ -18,6 +16,7 @@ function App() {
 
 const [weather, setWeather] = React.useState({});
 const [clothingItems, setClothingItems ] = React.useState([]);
+const [selectedClothingItems, setSelectedClothingItems] = React.useState([]);
 const [isModalOpen, setIsModalOpen ] = React.useState(false);
 const [isPopupOpen, setIsPopupOpen ] = React.useState(false);
 const [isConfirmationModalOpen, setIsConfirmationModalOpen] = React.useState(false);
@@ -56,15 +55,14 @@ const [deleteCard, setDeleteCard ] = React.useState(null);
  React.useEffect(() => {
   api.getItems()
   .then((res) => {
-    console.log(res)
     setClothingItems(res);
-    console.log(clothingItems)
+    setSelectedClothingItems(res.filter((item) => item.weather === weather.range));
   })
   .catch((error) => {
     console.log(error)
   })
 
- },[])
+ },[weather.range])
 
  const handleCardClick = ({name, weather, imageUrl, id}) => {
     
@@ -112,7 +110,7 @@ api.deleteItem(deleteCard).then((res) => {
                 <Profile clothingItems={clothingItems} handleCardClick={handleCardClick} openModal={openModal}/>
               </Route>
               <Route path="/">
-                <Main weather={weather} clothingItems={clothingItems} handleCardClick={handleCardClick} />
+                <Main weather={weather} selectedClothingItems={selectedClothingItems} handleCardClick={handleCardClick} />
               </Route>   
             </Switch>
           <Footer/>

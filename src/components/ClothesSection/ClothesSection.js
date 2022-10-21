@@ -12,7 +12,7 @@ function ClothesSection({clothingItems, handleCardClick, openModal}) {
             </div>
             <ul className="clothessection__cardlist">
                 {clothingItems.map((clothingItem) => {
-                    return <ItemCard clothingItem={clothingItem} key={clothingItem._id} handleCardClick={handleCardClick}/>
+                    return <ItemCard clothingItem={clothingItem} key={clothingItem.id} handleCardClick={handleCardClick}/>
                 })}
             </ul>
         </div>

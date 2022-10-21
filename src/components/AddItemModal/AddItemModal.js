@@ -11,9 +11,9 @@ function AddItemModal({onClose, isModalOpen, onAddItem}) {
     React.useEffect(() => {
         setName('');
         setImageUrl('');
-    },[setName, setImageUrl])
+    },[isModalOpen])
 
-    const handleChange = (event) => {
+    const handleWeatherUnitChange = (event) => {
         setWeather(event.target.value);
     }
 
@@ -31,15 +31,15 @@ function AddItemModal({onClose, isModalOpen, onAddItem}) {
             <input className="modal__inputtext" type="text" id="image" placeholder="Image URL" onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} required/>
             <label className="modal__label" htmlFor="weathertype">Select the weather type:</label>
             <div className="modal__radiocontainer">
-              <input className="modal__inputradio" type="radio" id="hot" name="weathertype" onChange={handleChange} value="hot"/>
+              <input className="modal__inputradio" type="radio" id="hot" name="weathertype" onChange={handleWeatherUnitChange} value="hot"/>
               <label className="modal__radiolabel" htmlFor="hot">Hot</label>
             </div>
             <div className="modal__radiocontainer">
-              <input className="modal__inputradio" type="radio" id="warm" name="weathertype" onChange={handleChange} value="warm"/>
+              <input className="modal__inputradio" type="radio" id="warm" name="weathertype" onChange={handleWeatherUnitChange} value="warm"/>
               <label className="modal__radiolabel" htmlFor="warm">Warm</label>
             </div>
             <div className="modal__radiocontainer">
-              <input className="modal__inputradio" type="radio" id="cold" name="weathertype" onChange={handleChange} value="cold"/>
+              <input className="modal__inputradio" type="radio" id="cold" name="weathertype" onChange={handleWeatherUnitChange} value="cold"/>
               <label className="modal__radiolabel" htmlFor="cold">Cold</label>
             </div>
         </ModalWithForm>

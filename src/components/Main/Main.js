@@ -4,7 +4,7 @@ import "./Main.css";
 import ItemCard from "../ItemCard/ItemCard";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({weather, clothingItems, handleCardClick}) {
+function Main({weather, selectedClothingItems, handleCardClick}) {
 
     const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
 
@@ -13,8 +13,8 @@ function Main({weather, clothingItems, handleCardClick}) {
             <WeatherCard weather={weather}/>
             <p className="main__text">Today is {weather.temp?.[currentTemperatureUnit]} / You may want to wear:</p>
             <ul className="main__cardlist">
-                {clothingItems.map((clothingItem) => {
-                    return <ItemCard clothingItem={clothingItem} key={clothingItem._id} handleCardClick={handleCardClick}/>
+                {selectedClothingItems.map((clothingItem) => {
+                    return <ItemCard clothingItem={clothingItem} key={clothingItem.id} handleCardClick={handleCardClick}/>
                 })}
             </ul>
         </main>
