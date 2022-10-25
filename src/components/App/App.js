@@ -16,7 +16,6 @@ function App() {
 
 const [weather, setWeather] = React.useState({});
 const [clothingItems, setClothingItems ] = React.useState([]);
-const [selectedClothingItems, setSelectedClothingItems] = React.useState([]);
 const [isModalOpen, setIsModalOpen ] = React.useState(false);
 const [isPopupOpen, setIsPopupOpen ] = React.useState(false);
 const [isConfirmationModalOpen, setIsConfirmationModalOpen] = React.useState(false);
@@ -56,13 +55,16 @@ const [deleteCard, setDeleteCard ] = React.useState(null);
   api.getItems()
   .then((res) => {
     setClothingItems(res);
-    setSelectedClothingItems(res.filter((item) => item.weather === weather.range));
   })
   .catch((error) => {
     console.log(error)
   })
 
- },[weather.range])
+ },[])
+
+ const selectedClothingItems = React.useMemo(() => {
+   return clothingItems.filter((item) => item.weather === weather.range);
+ },[clothingItems, weather.range]);
 
  const handleCardClick = ({name, weather, imageUrl, id}) => {
     
